@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Distribution Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f9fc;
+            color: #333;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .stat-card .change {
+            font-size: 12px;
+            color: #27ae60;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 500;
+            color: #7f8c8d;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-approve {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-reject {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-details {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                font-size: 13px;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>   
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">ZeroWaste</span>
+        </a>
+    
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/login" class="nav-link">Donors</a></li>
+          <li class="nav-item"><a href="/login" class="nav-link">Receivers</a></li>
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        </ul>
+      </header> 
+
+
+    <h1>Food Distribution Management</h1>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Food Saved Today</h3>
+            <div class="value">247.5 kg</div>
+            <div class="change">+12.5% from yesterday</div>
+        </div>
+        <div class="stat-card">
+            <h3>People Served</h3>
+            <div class="value">1,248</div>
+            <div class="change">+85 from yesterday</div>
+        </div>
+        <div class="stat-card">
+            <h3>New Donations</h3>
+            <div class="value">18</div>
+            <div class="change">5 need approval</div>
+        </div>
+        <div class="stat-card">
+            <h3>Pending Actions</h3>
+            <div class="value">7</div>
+            <div class="change">3 user registrations</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Today's Distribution</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Food Type</th>
+                    <th>Quantity</th>
+                    <th>People</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tirumala Temple Kitchen</td>
+                    <td>Meals</td>
+                    <td>85.5 kg</td>
+                    <td>420</td>
+                    <td><span class="status approved">Completed</span></td>
+                </tr>
+                <tr>
+                    <td>Srinivasa Annaprasadam</td>
+                    <td>Rice/Dal</td>
+                    <td>62.0 kg</td>
+                    <td>310</td>
+                    <td><span class="status approved">Completed</span></td>
+                </tr>
+                <tr>
+                    <td>Balaji Food Distribution</td>
+                    <td>Snacks</td>
+                    <td>35.0 kg</td>
+                    <td>175</td>
+                    <td><span class="status approved">Completed</span></td>
+                </tr>
+                <tr>
+                    <td>Padmavathi Community Kitchen</td>
+                    <td>Meals</td>
+                    <td>45.0 kg</td>
+                    <td>225</td>
+                    <td><span class="status pending">In Progress</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Donations Requiring Approval</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Donor</th>
+                    <th>Food Type</th>
+                    <th>Quantity</th>
+                    <th>Expiry</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Govinda Restaurant</td>
+                    <td>Vegetable Meals</td>
+                    <td>25 kg</td>
+                    <td>Tomorrow</td>
+                    <td>
+                        <button class="btn btn-approve">Approve</button>
+                        <button class="btn btn-reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sri Venkateswara Hostel</td>
+                    <td>Breakfast Items</td>
+                    <td>15 kg</td>
+                    <td>Today</td>
+                    <td>
+                        <button class="btn btn-approve">Approve</button>
+                        <button class="btn btn-reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Private Donor (Ramesh)</td>
+                    <td>Packaged Snacks</td>
+                    <td>8 kg</td>
+                    <td>5 days</td>
+                    <td>
+                        <button class="btn btn-details">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

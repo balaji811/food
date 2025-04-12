@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroWaste - Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #8BC34A;
+            --dark-color: #1B5E20;
+            --light-color: #C8E6C9;
+            --text-color: #333;
+            --white: #fff;
+            --gray: #f5f5f5;
+            --dark-gray: #777;
+            --error-color: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Auth Layout */
+        .auth-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .auth-left {
+            flex: 1;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .auth-left-content {
+            max-width: 500px;
+            z-index: 2;
+        }
+        
+        .auth-left h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .auth-left p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .auth-right {
+            flex: 1;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .auth-form-container {
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-logo img {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+        
+        .auth-logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .auth-header p {
+            color: var(--dark-gray);
+        }
+        
+        /* Form Styles */
+        .auth-form .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .auth-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .auth-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .auth-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-google {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .btn-google:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .btn-google img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .btn-facebook {
+            background-color: #1877F2;
+            color: white;
+            border: 1px solid #1877F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .btn-facebook:hover {
+            background-color: #166FE5;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--dark-gray);
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .divider::before {
+            margin-right: 10px;
+        }
+        
+        .divider::after {
+            margin-left: 10px;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .auth-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Remember Me & Forgot Password */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        /* Error Messages */
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* User Type Selector */
+        .user-type-selector {
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .user-type-selector input[type="radio"] {
+            display: none;
+        }
+        
+        .user-type-selector label {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            background-color: var(--gray);
+            transition: all 0.3s;
+        }
+        
+        .user-type-selector input[type="radio"]:checked + label {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Logout Section */
+        .logout-section {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+        
+        .logout-section h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        .logout-section p {
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+        
+        .btn-logout {
+            background-color: var(--error-color);
+        }
+        
+        .btn-logout:hover {
+            background-color: #d32f2f;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+            }
+            
+            .auth-left {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            
+            .auth-left-content {
+                max-width: 100%;
+            }
+            
+            .auth-right {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">ZeroWaste</span>
+        </a>
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/registrationpg" class="nav-link">Donars</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Recivers</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        </ul>
+      </header>
+
+    <div class="auth-container" id="auth-container">
+       
+        <!-- Left Side with Background Image -->
+        <div class="auth-left">
+            <div class="auth-left-content">
+                <h1>Welcome Back to ZeroWaste</h1>
+                <p>Sign in to continue your journey in reducing food waste and helping your community. Every login brings us closer to a world without hunger.</p>
+                <p>Not a member yet? <a href="register.html" style="color: var(--accent-color); font-weight: 500;">Join our movement</a></p>
+            </div>
+        </div>
+        
+        <!-- Right Side with Sign In Form -->
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-logo">
+                   <h1>ZeroWaste</h1>
+                </div>
+                
+                <div class="auth-header">
+                    <h2>Sign In to Your Account</h2>
+                    <p>Access your dashboard and continue making an impact</p>
+                </div>
+                
+                <form class="auth-form" action="/reclog"  method="POST">
+                    <div class="user-type-selector">
+                        <input type="radio" id="restaurant" name="user_type" value="ngo" checked>
+                        <label for="restaurant">NGO</label>
+                        <input type="radio" id="individual" name="user_type" value="individual">
+                        <label for="individual">Individual</label>
+                        <input type="radio" id="organization" name="user_type" value="">
+                        <label for="organization">Volunteers</label>
+                    </div>
+                    
+                   
+                    
+                   
+                    
+                    <div class="divider">or sign in with email</div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        <div class="error-message" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                        <div class="error-message" id="password-error">Password must be at least 8 characters</div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn">Sign In</button>
+                    
+                    <div class="auth-footer">
+                        Don't have an account? <a href="/recreg">Register now</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Section (hidden by default) -->
+    <div class="logout-section" id="logout-section">
+        <h2>You're Successfully Signed In</h2>
+        <p>Welcome back to ZeroWaste! You're now helping make a difference in your community by reducing food waste.</p>
+        <button class="btn btn-logout" id="logout-btn">Log Out</button>
+    </div>
+
+    
+</body>
+</html>

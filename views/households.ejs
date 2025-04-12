@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation Houses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-image: url("https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+      background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        .d-flex{
+            background-color: aliceblue;
+        }
+
+        .overlay {
+            
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            color: aliceblue;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .donation-houses {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .house-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .house-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: brown;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .house-name {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            margin-right: 10px;
+            color: #2ada0f;
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .food-type {
+            display: inline-block;
+            background: #f1c40f;
+            color: #2c3e50;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .donation-houses {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">ZeroWaste</span>
+        </a>
+    
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/Resturants" class="nav-link">Restaurants</a></li>
+          <li class="nav-item"><a href="/reccater" class="nav-link">Caters</a></li>
+          <li class="nav-item"><a href="/reclogin" class="nav-link">Households</a></li>
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        </ul>
+      </header> 
+
+    <div class="overlay">
+        <div class="container">
+            <header>
+                <h1 >Community Food Donation Houses</h1>
+                <p class="subtitle">Local households sharing meals with those in need</p>
+            </header>
+
+            <div class="donation-houses">
+                <!-- House 1 -->
+                <a href="/donor" class="house-card">
+                    <div class="card-header">
+                        <h2 class="house-name">ALEKYA CHITTI'S FAMILY</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-text">varadharaja nagar , Tirupati</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-text">987676465</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🍽</span>
+                         
+                        </div>
+                    </div>
+                </a>
+
+                <!-- House 2 -->
+                <a href="/donor" class="house-card">
+                    <div class="card-header">
+                        <h2 class="house-name">RADHA-KRISHNA</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-text">Railway colony, Tirupati</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-text">9376474848</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🍽</span>
+                           
+                        </div>
+                    </div>
+                </a>
+
+                <!-- House 3 -->
+                <a href="/donor" class="house-card">
+                    <div class="card-header">
+                        <h2 class="house-name">ESWERS'S KITCHEN</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-text">Gandhi Road, Tirupati</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-text">6758596969</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🍽</span>
+                            
+                        </div>
+                    </div>
+                </a>
+
+                <!-- House 4 -->
+                <a href="/donor" class="house-card">
+                    <div class="card-header">
+                        <h2 class="house-name">ROYAL FAMILY</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-text">laxmi puram circle, Tirupati</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-text">875756575</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🍽</span>
+                           
+                        </div>
+                    </div>
+                </a>
+
+                <!-- House 5 -->
+                <a href="/donor" class="house-card">
+                    <div class="card-header">
+                        <h2 class="house-name">ANNAPOORNA</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-text">Bus stand, Chandragri</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-text">984764644</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🍽</span>
+                            
+                        </div>
+                    </div>
+                </a>
+
+                <!-- House 6 -->
+                <a href="/donor" class="house-card">
+                    <div class="card-header">
+                        <h2 class="house-name">AMMA'S</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-text">Rangampeta , Tirupati</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-text">6278389339</div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🍽</span>
+                           
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+           
+        </div>
+    </div>
+</body>
+</html>

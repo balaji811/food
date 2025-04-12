@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Restaurant Caterers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    :root {
+      --primary: #e74c3c;
+      --primary-dark: #c0392b;
+      --primary-light: #fadbd8;
+      --accent: #f39c12;
+      --white: #ffffff;
+      --light-gray: #f5f5f5;
+      --medium-gray: #e0e0e0;
+      --dark-gray: #757575;
+      --text: #333333;
+  }
+  
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+      background-color: var(--light-gray);
+      color: var(--text);
+      line-height: 1.6;
+      background-image: url("https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+      background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+  }
+  
+
+.d-flex{
+    background-color: #f5f5f5;
+}
+
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+  }
+  
+  /* Hero Section with Food Background */
+  .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--white);
+      padding: 120px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  
+  .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(231, 76, 60, 0.2);
+      z-index: 1;
+  }
+  
+  .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeIn 1s ease;
+  }
+  
+  .hero h1 {
+      font-size: 3.8rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      animation: slideDown 0.8s ease;
+  }
+  
+  .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      animation: fadeIn 1.2s ease;
+  }
+  
+  .search-bar {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      animation: fadeInUp 1s ease;
+  }
+  
+  .search-bar input {
+      width: 100%;
+      padding: 18px 25px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  }
+  
+  .search-bar button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+  
+  .search-bar button:hover {
+      background-color: var(--primary-dark);
+  }
+  
+  /* Restaurant Listing */
+  .restaurant-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+  }
+  
+  .restaurant-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+  }
+  
+  .restaurant-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+  
+  .restaurant-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+  }
+  
+  .restaurant-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+  }
+  
+  .restaurant-card:hover .restaurant-image img {
+      transform: scale(1.1);
+  }
+  
+  .restaurant-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  }
+  
+  .restaurant-info {
+      padding: 25px;
+  }
+  
+  .restaurant-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+  }
+  
+  .restaurant-cuisine {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: block;
+  }
+  
+  .restaurant-rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+  }
+  
+  .restaurant-rating .stars {
+      color: #FFD700;
+      margin-right: 10px;
+  }
+  
+  .restaurant-rating .reviews {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+  }
+  
+  .restaurant-description {
+      margin-bottom: 20px;
+      color: var(--dark-gray);
+  }
+  
+  .restaurant-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--medium-gray);
+  }
+  
+  .restaurant-meta div {
+      display: flex;
+      align-items: center;
+  }
+  
+  .restaurant-meta i {
+      color: var(--primary);
+      margin-right: 8px;
+      font-size: 1.1rem;
+  }
+  
+  .restaurant-meta span {
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+  }
+  
+  /* Section Title */
+  .section-title {
+      text-align: center;
+      margin: 60px 0 40px;
+      position: relative;
+  }
+  
+  .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+      display: inline-block;
+      padding-bottom: 15px;
+      position: relative;
+  }
+  
+  .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background-color: var(--primary);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+      from { 
+          opacity: 0;
+          transform: translateY(-50px);
+      }
+      to { 
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  @keyframes fadeInUp {
+      from { 
+          opacity: 0;
+          transform: translateY(30px);
+      }
+      to { 
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  /* Link hover effects */
+  a:hover .restaurant-card {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      .hero {
+          padding: 80px 20px;
+          background-attachment: scroll;
+      }
+  
+      .hero h1 {
+          font-size: 2.5rem;
+      }
+  
+      .hero p {
+          font-size: 1.1rem;
+      }
+  
+      .restaurant-list {
+          grid-template-columns: 1fr;
+      }
+  
+      .section-title h2 {
+          font-size: 2rem;
+      }
+  }
+    </style>
+
+</head>
+<body>
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">ZeroWaste</span>
+        </a>
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/login" class="nav-link">Restaurants</a></li>
+          <li class="nav-item"><a href="/login" class="nav-link">Caters</a></li>
+          <li class="nav-item"><a href="/login" class="nav-link">Households</a></li>
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section with Food Background -->
+       
+
+        <!-- Restaurant Listing -->
+        <div class="section-title">
+            <h2>Catering Services</h2>
+        </div>
+
+        <div class="restaurant-list">
+            <!-- Restaurant Card 1 -->
+            <a href="/donor" class="text-decoration-none">
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gourmet Catering Co.">
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Gourmet Catering Co.</h3>
+                        <span class="restaurant-cuisine">Fine Dining | Plated Service</span>
+                        <div class="restaurant-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                            <span class="reviews">(128 reviews)</span>
+                        </div>
+                        <p class="restaurant-description">Exquisite catering for upscale events with customizable menus and professional service staff.</p>
+                        <div class="restaurant-meta">
+                            <div>
+                                <i class="fas fa-utensils"></i>
+                                <span>Multi-Cuisine</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Downtown Area</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Restaurant Card 2 -->
+            <a href="/donor" class="text-decoration-none">
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rustic Kitchen">
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Rustic Kitchen</h3>
+                        <span class="restaurant-cuisine">Comfort Food | Buffet Service</span>
+                        <div class="restaurant-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="reviews">(95 reviews)</span>
+                        </div>
+                        <p class="restaurant-description">Hearty, homemade dishes perfect for large gatherings and family-style events.</p>
+                        <div class="restaurant-meta">
+                            <div>
+                                <i class="fas fa-utensils"></i>
+                                <span>American</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>West District</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Restaurant Card 3 -->
+            <a href="/donor" class="text-decoration-none">
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mediterranean Flavors">
+                    </div>
+                    <div class="restaurant-info">
+                        <h3>Mediterranean Flavors</h3>
+                        <span class="restaurant-cuisine">Mediterranean | Family Style</span>
+                        <div class="restaurant-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="reviews">(142 reviews)</span>
+                        </div>
+                        <p class="restaurant-description">Fresh, healthy Mediterranean cuisine with vegetarian and vegan options available.</p>
+                        <div class="restaurant-meta">
+                            <div>
+                                <i class="fas fa-utensils"></i>
+                                <span>Mediterranean</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>North District</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous"></script>
+</body>
+</html>
