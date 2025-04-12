@@ -1,3 +1,4 @@
+
 ##Project Title
 
   ZeroWaste Food
@@ -31,7 +32,8 @@ we used different frameworks to make the project there consists of different dom
    - Bcrypt(encription)  
 
  images
-  
+
+   ![Screenshot 2025-04-13 045155](https://github.com/user-attachments/assets/9f64d2df-b76b-4a0d-8216-4f32994c71c3)
 
   
 
